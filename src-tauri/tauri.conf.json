@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "XscapeNet",
+  "version": "2.2.1",
+  "identifier": "dev.xscape.net",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "popover",
+        "title": "XscapeNet",
+        "url": "index.html?view=popover",
+        "width": 384,
+        "height": 560,
+        "resizable": false,
+        "decorations": false,
+        "transparent": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "visible": false,
+        "shadow": false
+      },
+      {
+        "label": "advanced",
+        "title": "XscapeNet — Advanced Analytics",
+        "url": "index.html?view=advanced",
+        "width": 1160,
+        "height": 740,
+        "minWidth": 680,
+        "minHeight": 520,
+        "resizable": true,
+        "decorations": false,
+        "transparent": false,
+        "center": true,
+        "visible": true,
+        "shadow": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' data: blob:; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico",
+      "icons/icon.png"
+    ]
+  }
+}

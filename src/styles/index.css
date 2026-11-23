@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--x-bg, #000000);
+    overflow: hidden;
+    user-select: none;
+    color: #f8fafc;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 1. OLED Black (Default): Pitch-black luxury monochrome with crisp silver-ice & platinum accents */
+  :root,
+  [data-xscape-theme="oled_black"] {
+    --x-bg: #000000;
+    --x-glow-1: rgba(255, 255, 255, 0.065);
+    --x-glow-2: rgba(148, 163, 184, 0.055);
+    --x-glow-3: rgba(226, 232, 240, 0.04);
+    --x-glass-top: rgba(24, 24, 29, 0.68);
+    --x-glass-bot: rgba(8, 8, 11, 0.82);
+    --x-glass-rim: rgba(255, 255, 255, 0.13);
+    --x-glass-hi: rgba(255, 255, 255, 0.24);
+    --x-rx: #e2e8f0;
+    --x-tx: #7dd3fc;
+    --x-accent: #f8fafc;
+    --x-accent-fg: #050507;
+    --x-accent-soft: rgba(255, 255, 255, 0.12);
+    --x-bar: #e2e8f0;
+  }
+
+  /* 2. Midnight Violet (Deep, rich dark royal-violet liquid glass) */
+  [data-xscape-theme="violet"] {
+    --x-bg: #030107;
+    --x-glow-1: rgba(147, 51, 234, 0.24);
+    --x-glow-2: rgba(109, 40, 217, 0.18);
+    --x-glow-3: rgba(192, 132, 252, 0.1);
+    --x-glass-top: rgba(26, 14, 46, 0.64);
+    --x-glass-bot: rgba(9, 4, 18, 0.84);
+    --x-glass-rim: rgba(192, 132, 252, 0.22);
+    --x-glass-hi: rgba(233, 213, 255, 0.34);
+    --x-rx: #c084fc;
+    --x-tx: #818cf8;
+    --x-accent: #a855f7;
+    --x-accent-fg: #ffffff;
+    --x-accent-soft: rgba(168, 85, 247, 0.2);
+    --x-bar: #c084fc;
+  }
+
+  /* 3. Obsidian Slate (Deep graphite + cool ice cyan & teal) */
+  [data-xscape-theme="obsidian"] {
+    --x-bg: #05070b;
+    --x-glow-1: rgba(56, 189, 248, 0.14);
+    --x-glow-2: rgba(45, 212, 191, 0.1);
+    --x-glow-3: rgba(148, 163, 184, 0.06);
+    --x-glass-top: rgba(18, 24, 36, 0.66);
+    --x-glass-bot: rgba(8, 11, 18, 0.84);
+    --x-glass-rim: rgba(125, 211, 252, 0.16);
+    --x-glass-hi: rgba(224, 242, 254, 0.26);
+    --x-rx: #38bdf8;
+    --x-tx: #2dd4bf;
+    --x-accent: #38bdf8;
+    --x-accent-fg: #030712;
+    --x-accent-soft: rgba(56, 189, 248, 0.18);
+    --x-bar: #38bdf8;
+  }
+
+  /* 4. Emerald Noir (Pitch black-emerald + luminous mint & jade) */
+  [data-xscape-theme="emerald"] {
+    --x-bg: #010503;
+    --x-glow-1: rgba(16, 185, 129, 0.18);
+    --x-glow-2: rgba(5, 150, 105, 0.12);
+    --x-glow-3: rgba(34, 211, 238, 0.08);
+    --x-glass-top: rgba(10, 28, 21, 0.64);
+    --x-glass-bot: rgba(3, 11, 8, 0.84);
+    --x-glass-rim: rgba(52, 211, 153, 0.2);
+    --x-glass-hi: rgba(209, 250, 229, 0.28);
+    --x-rx: #34d399;
+    --x-tx: #22d3ee;
+    --x-accent: #10b981;
+    --x-accent-fg: #022c22;
+    --x-accent-soft: rgba(16, 185, 129, 0.2);
+    --x-bar: #34d399;
+  }
+
+  /* Glass Intensity Dials */
+  [data-glass="subtle"] {
+    --x-blur: 18px;
+    --x-sat: 130%;
+  }
+  [data-glass="liquid"],
+  :root {
+    --x-blur: 32px;
+    --x-sat: 165%;
+  }
+  [data-glass="ultra"] {
+    --x-blur: 44px;
+    --x-sat: 195%;
+  }
+}
+
+/* Deep architectural ambient stage for authentic dark Liquid Glass refraction */
+.xscape-stage {
+  background-color: var(--x-bg);
+  background-image:
+    radial-gradient(620px 340px at 14% -8%, var(--x-glow-1), transparent 64%),
+    radial-gradient(560px 360px at 88% 6%, var(--x-glow-2), transparent 62%),
+    radial-gradient(500px 300px at 50% 108%, var(--x-glow-3), transparent 66%);
+}
+
+/* Silky GPU-composited Apple-grade Dark Liquid Glass panel (ZERO jagged SVG edges!) */
+.lg-panel {
+  position: relative;
+  background: linear-gradient(168deg, var(--x-glass-top) 0%, var(--x-glass-bot) 100%);
+  backdrop-filter: blur(var(--x-blur)) saturate(var(--x-sat));
+  -webkit-backdrop-filter: blur(var(--x-blur)) saturate(var(--x-sat));
+  border: 1px solid var(--x-glass-rim);
+  box-shadow:
+    inset 0 1px 0 var(--x-glass-hi),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 20px 50px rgba(0, 0, 0, 0.72),
+    0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Specular liquid-glass pill groove */
+.lg-pill {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--x-glass-rim);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Raised refractive glass active pill */
+.lg-pill-active {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.07) 100%
+  );
+  border: 1px solid var(--x-glass-hi);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.lg-cta {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border: 1px solid var(--x-glass-rim);
+  box-shadow:
+    inset 0 1px 0 var(--x-glass-hi),
+    0 10px 28px rgba(0, 0, 0, 0.55);
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lg-cta:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  border-color: var(--x-glass-hi);
+}
+
+.lg-cta:active {
+  transform: scale(0.985);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Auto-hiding ultra-clean scrollbars */
+.clean-scroll {
+  scrollbar-width: none;
+}
+.clean-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.clean-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.clean-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+}
+.clean-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+.clean-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,16 @@
+# Dependencies & build outputs
+node_modules/
+dist/
+src-tauri/target/
+
+# Local runtime & database artifacts
+*.db
+*.db-wal
+*.db-shm
+*.log
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
